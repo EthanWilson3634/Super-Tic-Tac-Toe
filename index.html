@@ -8,20 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="game--title">Super Tic-Tac-Toe</h1>
+    <h1>Super Tic-Tac-Toe</h1>
     <div id="board">
-      <div data-cell-index="0" class="cell">1</div>
-      <div data-cell-index="1" class="cell">2</div>
-      <div data-cell-index="2" class="cell">3</div>
-      <div data-cell-index="3" class="cell">4</div>
-      <div data-cell-index="4" class="cell">5</div>
-      <div data-cell-index="5" class="cell">6</div>
-      <div data-cell-index="6" class="cell">7</div>
-      <div data-cell-index="7" class="cell">8</div>
-      <div data-cell-index="8" class="cell">9</div>
+      <div data-cell-index="0" class="cell right-border bottom-border"></div>
+      <div data-cell-index="1" class="cell bottom-border right-border"></div>
+      <div data-cell-index="2" class="cell bottom-border"></div>
+      <div data-cell-index="3" class="cell right-border bottom-border"></div>
+      <div data-cell-index="4" class="cell bottom-border right-border"></div>
+      <div data-cell-index="5" class="cell bottom-border"></div>
+      <div data-cell-index="6" class="cell right-border"></div>
+      <div data-cell-index="7" class="cell right-border"></div>
+      <div data-cell-index="8" class="cell"></div>
+      <div id="strike" class="strike"></div>
     </div>
-    <h2 class="game--status"></h2>
-    <button class="game--restart">Restart</button>
+    <div id="results" class="hidden">
+        <h2 id="result-text">Winner is X</h2>
+        <button class="button">Restart</button>
+    </div>
 
     <script src="app.js"></script>
   </body>

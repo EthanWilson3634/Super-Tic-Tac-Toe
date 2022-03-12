@@ -1,83 +1,31 @@
-const statusDisplay = document.querySelector('.game--status');
+const cells = document.querySelectorAll(".cell");
+const PLAYER_X = 'X';
+const PLAYER_O = 'O';
+let turn = PLAYER_X;
 
-let gameActive = true;
-let currentPlayer = X;
-let gameState = ["", "", "", "", "", "", "", "", ""];
+boardState = ["", "", "", "", "", "", "", "", "",];
 
-const winningMessage = () =>'Player ${currentPlayer} has won!';
-const drawMessage = () => 'The game has ended in a draw.';
-const currentPlayerTurn = () => 'Its ${currentPlayer}s turn';
+const strike = document.getElementById("strike");
+const results = document.getElementById("results");
+const resultText = document.getElementById("results-text");
+const restartButton = document.getElementById("button");
 
-statusDisplay.innerHTML = currentPlayerTurn;
+cells.forEach((cell) => cell.addEventListener('click', cellClick));
 
-const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 8]
-];
-
-function cellPlayed(clickedCell, clickedCellIndex){
-    gameState[clickedCellIndex] = currentPlayer;
-    clickedCell.innerHTML = currentPlayer;
-}
-
-function playerChange(){
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusDisplay.innerHTML = currentPlayerTurn;
-}
-
-function resultVaildation(){
-    let roundWon = false;
-    for(let i = 0; i <= 7; i++){
-        const winCondition = winingConditions[i];
-        let a = gameState[winCondition[0]];
-        let b = gameState[winCondition[1]];
-        let c = gameState[winCondition[2]];
-        if(a === '' || b === '' || c === ''){
-            continue;
-        }
-        if(a === b && b === c){
-            roundWon = true;
-            break;
-        }
-    }
-
-    if(roundWon){
-        statusDisplay.innerHTML = winningMessage();
-        gameActive = false;
+function cellClick(event){
+    if(results.classList.contains('visible')){
         return;
     }
 
-    let roundDraw = !gameState.includes("");
-    if(roundDraw){
-        statusDisplay.innerHTML = drawMessage();
-        gameActive = false;
+    const cell = event.target;
+    const cellIndex = cell.dataset.cellIndex;
+    if(cell.innerText != ""){
         return;
     }
 
-    playerChange();
+    if(turn === PLAYER_X){
+        cell.innerText = PLAYER_X;
+        boardState[cellIndex] = PLAYER_X;
+        turn = PLAYER_O;
+    }
 }
-
-function cellClick(clickedCellEvent){
-    const clickedCell = clickedCellEvent.target;
-    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
-
-    cellPlayed(clickedCell, clickedCellIndex);
-    resultVaildation();
-}
-
-function restartGame(){
-    gameActive = true;
-    currentPlayer = "X";
-    gameState = ["", "", "", "", "", "", "", "", ""]
-    statusDisplay.innerHTML = currentPlayerTurn();
-    document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
-}
-
-document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', cellClick));
-document.querySelector('.game--restart').addEventListener('click', restartGame);
