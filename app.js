@@ -35,7 +35,48 @@ function resultVaildation(){
     let roundWon = false;
     for(let i = 0; i <= 7; i++){
         const winCondition = winingConditions[i];
+        let a = gameState[winCondition[0]];
+        let b = gameState[winCondition[1]];
+        let c = gameState[winCondition[2]];
+        if(a === '' || b === '' || c === ''){
+            continue;
+        }
+        if(a === b && b === c){
+            roundWon = true;
+            break;
+        }
     }
+
+    if(roundWon){
+        statusDisplay.innerHTML = winningMessage();
+        gameActive = false;
+        return;
+    }
+
+    let roundDraw = !gameState.includes("");
+    if(roundDraw){
+        statusDisplay.innerHTML = drawMessage();
+        gameActive = false;
+        return;
+    }
+
+    playerChange();
+}
+
+function cellClick(clickedCellEvent){
+    const clickedCell = clickedCellEvent.target;
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+
+    cellPlayed(clickedCell, clickedCellIndex);
+    resultVaildation();
+}
+
+function restartGame(){
+    gameActive = true;
+    currentPlayer = "X";
+    gameState = ["", "", "", "", "", "", "", "", ""]
+    statusDisplay.innerHTML = currentPlayerTurn();
+    document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', cellClick));
