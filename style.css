@@ -88,7 +88,7 @@ body{
     transform: skewY(-45deg);
 }
 
-#results{
+#game-over-area{
     text-align: center;
     border: yellow 10px solid;
     padding: 50px;
@@ -106,6 +106,11 @@ h2{
     margin-top: 0px;
 }
 
+.game-over-text{
+    color: yellow;
+    font-size: 1.75em;
+}
+
 .button{
     background-color: transparent;
     width: 100px;
@@ -120,7 +125,7 @@ h2{
 }
 
 .visible{
-    display: block;
+    display: block; 
 }
 
 .x-hover:hover::after{
