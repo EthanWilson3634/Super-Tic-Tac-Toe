@@ -1,139 +1,125 @@
-body{
-    font-family: "Arial", sans-serif;
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: blue;
-}
-
-#board{
+    color: yellow;
+  }
+  
+  #board {
     display: grid;
     grid-template-columns: 100px 100px 100px;
     grid-template-rows: 100px 100px 100px;
     cursor: pointer;
-    color: yellow;
     position: relative;
-}
-
-.cell{
-    color: yellow;
+  }
+  
+  .tile {
+    color: currentColor;
     font-size: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.right-border{
-    border-right: 0.1em solid yellow;
-}
-
-.bottom-border{
-    border-bottom: 0.1em solid yellow;
-}
-
-.strike{
+  }
+  
+  .right-border {
+    border-right: 0.2em solid yellow;
+  }
+  
+  .bottom-border {
+    border-bottom: 0.2em solid yellow;
+  }
+  
+  .strike {
     position: absolute;
     background-color: darkred;
-}
-
-.strike-row-1{
+  }
+  
+  .strike-row-1 {
     width: 100%;
     height: 4px;
     top: 15%;
-}
-
-.strike-row-2{
+  }
+  .strike-row-2 {
     width: 100%;
     height: 4px;
     top: 48%;
-}
-
-.strike-row-3{
+  }
+  .strike-row-3 {
     width: 100%;
     height: 4px;
     top: 83%;
-}
-
-.strike-column-1{
+  }
+  .strike-column-1 {
     height: 100%;
     width: 4px;
     left: 15%;
-}
-
-.strike-column-2{
+  }
+  .strike-column-2 {
     height: 100%;
     width: 4px;
     left: 48%;
-}
-
-.strike-column-3{
+  }
+  .strike-column-3 {
     height: 100%;
     width: 4px;
     left: 83%;
-}
-
-.strike-diagonal-1{
+  }
+  .strike-diagonal-1 {
     width: 90%;
     height: 4px;
     top: 50%;
     left: 5%;
     transform: skewY(45deg);
-}
-
-.strike-diagonal-2{
+  }
+  .strike-diagonal-2 {
     width: 90%;
     height: 4px;
     top: 50%;
     left: 5%;
     transform: skewY(-45deg);
-}
-
-#game-over-area{
+  }
+  
+  h1 {
+    color: currentColor;
+  }
+  
+  #game-over-area {
     text-align: center;
-    border: yellow 10px solid;
+    border: yellow 8px solid;
     padding: 50px;
-    width: 200px;
+    width: 50%;
     margin-top: 50px;
-}
-
-h1{
-    color: yellow;
-}
-
-h2{
-    color: yellow;
+  }
+  
+  h2 {
+    color: currentColor;
     font-size: 2em;
     margin-top: 0px;
-}
-
-.game-over-text{
-    color: yellow;
-    font-size: 1.75em;
-}
-
-.button{
+  }
+  
+  button {
     background-color: transparent;
-    width: 100px;
-    height: 50px;
-    color: yellow;
+    color: currentColor;
+    border: currentColor 1px solid;
     padding: 10px;
     font-size: 1.5em;
-}
-
-.hidden{
+  }
+  
+  .hidden {
     display: none;
-}
-
-.visible{
-    display: block; 
-}
-
-.x-hover:hover::after{
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  .x-hover:hover::after {
     content: "X";
     opacity: 0.4;
-}
-
-.o-hover:hover::after{
+  }
+  
+  .o-hover:hover::after {
     content: "O";
     opacity: 0.4;
-}
+  }
